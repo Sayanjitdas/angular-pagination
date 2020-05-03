@@ -1,0 +1,31 @@
+<div class="container">
+    <nav class="m-5" aria-label="...">
+        <ul class="pagination">
+            <li class="page-item"
+                [ngClass] = "{disabled : indexing === 1}"
+            >
+                <span class="page-link"(click)="getPreviousPage()">Previous</span>
+            </li>
+            <ng-container *ngFor="let item of paginationSlider;let i=index">
+                <li class="page-item" 
+                    [ngClass] = "{ active : item.page_id === indexing }"
+                >
+                    <a class="page-link" href="#" (click)="currentPage = item.page_id">{{item.page_id}}</a>
+                </li>
+            </ng-container>
+
+            <li class="page-item"
+                [ngClass] = "{disabled : indexing === images.length}"
+            >
+                <span class="page-link" (click)="getNextPage()">Next</span>
+            </li>
+        </ul>
+    </nav>
+    <hr>
+
+    <div class="">
+        <img [src]="images[indexing-1].url" alt="" class="text-center h-50 w-50">
+    </div>
+
+
+</div>
